@@ -1,0 +1,49 @@
+<section class="hero is-primary is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title pacifico larger-text">
+        modern web store
+      </h1>
+
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div class="notification is-danger" *ngIf="errors.length > 0">
+            <ul>
+              <li *ngFor="let error of errors">{{ error.message }}</li>
+            </ul>
+          </div>
+          <form [formGroup]="form">
+
+            <p class="control">
+              <input class="input is-large" type="text" placeholder="Nome" formControlName="name">
+              <span class="tag is-danger" *ngIf="!form.controls.name.valid && !form.controls.name.pristine">Nome inválido</span>
+            </p>
+
+            <p class="control">
+              <input class="input is-large" type="text" placeholder="Usuário" formControlName="username">
+            </p>
+
+            <p class="control" id="emailControl">
+              <input class="input is-large" type="email" placeholder="E-mail" formControlName="email" [ngClass]=" {'is-danger': (!form.controls.email.valid && !form.controls.email.pristine) }">
+              <span class="tag is-danger" *ngIf="!form.controls.email.valid && !form.controls.email.pristine">E-mail inválido</span>
+            </p>
+
+            <p class="control">
+              <input class="input is-large" type="text" placeholder="CPF" formControlName="clienteuniqueid" maxlength="11" number>
+            </p>
+
+            <p class="control">
+              <input class="input is-large" type="password" placeholder="Senha" formControlName="password">
+            </p>
+
+            <p>
+              <button (click)="submit()" class="button is-primary is-inverted is-outlined is-large is-fullwidth" [disabled]="!form.valid">CADASTRAR</button>
+              <br>
+              <a class="button is-link is-fullwidth">VOLTAR PARA TELA DE LOGIN</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

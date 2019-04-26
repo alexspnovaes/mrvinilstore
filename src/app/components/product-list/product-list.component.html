@@ -1,0 +1,34 @@
+<div class="heading animated fadeIn">
+  <div class="container">
+    <label class="control-label" for="ddlGenre">Gênero</label>
+    <select data-selectize="true" #ddlGenre data-val="true" (change)="changeGenre(ddlGenre.value)">
+      <option value="1">POP</option>
+      <option value="2">MPB</option>
+      <option value="3">CLASSIC</option>
+      <option value="4">ROCK</option>
+    </select>
+  </div>         
+</div>
+<div class="columns is-multiline"
+  infinite-scroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="30">
+  <ngx-loading [show]="loading" [loadingConfig]="loadingConfig"></ngx-loading>
+  <div class="column is-3 animated slideInUp" *ngFor="let product of products">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="{{ product.imageURL }}" alt="{{ product.description }}">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          {{ product.name }}
+          <br>
+          <h1 class="has-text-centered">R$ {{ product.price | number: '1.2-2' }}</h1>
+          <button (click)="addToCart(product)" class="button is-success is-fullwidth"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp; ADICIONAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

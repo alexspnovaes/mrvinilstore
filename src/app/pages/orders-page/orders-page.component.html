@@ -1,0 +1,35 @@
+<app-headbar></app-headbar>
+
+<section class="section">
+  <div class="container">
+    <div class="heading animated fadeIn">
+      <h1 class="title">Resumo das Compras</h1>
+      <h2 class="subtitle">
+          {{items.length }} ítens
+      </h2>
+    </div>
+    <br>  
+  <table class="table is-striped">
+      <thead>
+        <tr>
+          <th class="has-text-centered">#</th>
+          <th class="has-text-centered">Data</th>
+          <th class="has-text-centered">Valor</th>
+          <th class="has-text-centered">Retorno</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+            <td class="has-text-left">{{ item.order.number }}</td>
+            <td class="has-text-left">{{ item.order.date }}</td>
+            <td class="has-text-left"><strong>R$ {{ (item.valorTotal) | number: '1.2-2' }}</strong></td>          
+            <td class="has-text-left"><strong>R$ {{ (item.orderCashbackValue) | number: '1.2-2' }}</strong></td>  
+        </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div>
+</section>
+<app-footer></app-footer>

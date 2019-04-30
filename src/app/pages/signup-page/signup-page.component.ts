@@ -53,7 +53,7 @@ export class SignupPageComponent implements OnInit {
       alert('Bem vindo ao Modern Store');
       this.router.navigateByUrl('/');
     }, error => {
-      this.errors = JSON.parse(error._body).errors;
+      this.errors = JSON.parse(error._body).erros.errors;
     });
   }
 }
